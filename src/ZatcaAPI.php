@@ -35,8 +35,10 @@ class ZatcaAPI
      * @param ClientInterface|null $client Optional HTTP client to enable dependency injection.
      * @throws InvalidArgumentException For invalid environment.
      */
-    public function __construct(string $environment = 'sandbox', ?ClientInterface $client = null)
+    public function __construct(string $environment = 'sandbox', ?ClientInterface $client = null, $allowWarnings = false)
     {
+        $this->allowWarnings = $allowWarnings;
+
         if (!isset(self::ENVIRONMENTS[$environment])) {
             $validEnvs = implode(', ', array_keys(self::ENVIRONMENTS));
             throw new InvalidArgumentException("Invalid environment. Valid options: $validEnvs");
@@ -141,7 +143,6 @@ class ZatcaAPI
                 $this->createAuthHeaders($certificate, $secret)
             );
         } catch (ZatcaApiException $e) {
-            // يمكن إضافة منطق لمعالجة التحذيرات هنا إذا لزم الأمر.
             throw $e;
         }
     }
