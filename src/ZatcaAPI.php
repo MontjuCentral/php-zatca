@@ -257,8 +257,7 @@ class ZatcaAPI
 
             $response = $this->httpClient->request($method, $url, $options);
             $statusCode = $response->getStatusCode();
-            dd($statusCode);
-//dd($response);
+
             if (!$this->isSuccessfulResponse($statusCode)) {
                 throw new ZatcaApiException(null, [
                     'endpoint' => $endpoint,
@@ -266,7 +265,7 @@ class ZatcaAPI
                     'response' => $this->parseResponse($response),
                 ]);
             }
-            dd($response);
+
             return $this->parseResponse($response);
         } catch (GuzzleException $e) {
             throw new ZatcaApiException('HTTP request failed', [
