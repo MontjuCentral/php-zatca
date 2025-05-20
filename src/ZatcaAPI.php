@@ -37,7 +37,7 @@ class ZatcaAPI
      */
     public function __construct(string $environment = 'sandbox', ?ClientInterface $client = null, $allowWarnings = false)
     {
-        $this->allowWarnings = $allowWarnings;
+        $this->allowWarnings = $allowWarnings; // to allow warnings
 
         if (!isset(self::ENVIRONMENTS[$environment])) {
             $validEnvs = implode(', ', array_keys(self::ENVIRONMENTS));
