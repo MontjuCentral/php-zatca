@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Helpers\InvoiceExtension;
+use Montju\Zatca\Helpers\InvoiceExtension;
 
 class InvoiceExtensionTest extends TestCase
 {

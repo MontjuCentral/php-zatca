@@ -24,9 +24,18 @@ Please feel free to <a href="https://github.com/Saleh7/php-zatca-xml/pulls?q=sor
 <a href="https://github.com/Saleh7/php-zatca-xml/discussions">Ask questions</a>
 </p>
 
+## 📦 Fork Notice
+
+This is a **fork** of the original package [`Saleh7/php-zatca-xml`](https://github.com/Saleh7/php-zatca-xml), with custom modifications by **Ahmed Elshafie**.
+
+Changes include:
+- Updated namespace
+- Bug fixes
+- etc.
+
 ## 📖 Introduction  
 
-**PHP-ZATCA-XML** is an unofficial PHP library for generating **ZATCA Fatoora** e-invoices. It simplifies the process of creating compliant e-invoices, generating QR codes, handling certificates, and submitting invoices to **ZATCA’s servers**.  
+**PHP-ZATCA** is an unofficial PHP library for generating **ZATCA Fatoora** e-invoices. It simplifies the process of creating compliant e-invoices, generating QR codes, handling certificates, and submitting invoices to **ZATCA’s servers**.  
 
 Designed for **easy integration**, this library provides developers with a **customizable, robust, and efficient toolkit** to automate the ZATCA e-invoicing process in PHP applications.
 
@@ -71,7 +80,7 @@ Ensure the following PHP extensions are installed and enabled:
 ## 🛠 Installation  
 
 ```bash
-composer require saleh7/php-zatca-xml
+composer require montju/php-zatca
 ```
 
 ## 🚀 Usage  
@@ -85,8 +94,8 @@ This library simplifies the process of generating **ZATCA-compliant** e-invoices
 First, generate a **certificate signing request (CSR)** and private key:  
 
 ```php
-use Saleh7\Zatca\CertificateBuilder;
-use Saleh7\Zatca\Exceptions\CertificateBuilderException;
+use Montju\Zatca\CertificateBuilder;
+use Montju\Zatca\Exceptions\CertificateBuilderException;
 
 try {
     (new CertificateBuilder())
@@ -118,8 +127,8 @@ try {
 Once the CSR is generated, you need to request a **compliance certificate** from **ZATCA's API**.  
 
 ```php
-use Saleh7\Zatca\ZatcaAPI;
-use Saleh7\Zatca\Exceptions\ZatcaApiException;
+use Montju\Zatca\ZatcaAPI;
+use Montju\Zatca\Exceptions\ZatcaApiException;
 
 $zatcaClient = new ZatcaAPI('sandbox');
 
@@ -161,7 +170,7 @@ try {
 Now that we have the compliance certificate, we can generate a **ZATCA-compliant e-invoice in XML format**.
 
 ```php
-use Saleh7\Zatca\{
+use Montju\Zatca\{
     SignatureInformation, UBLDocumentSignatures, ExtensionContent, UBLExtension, UBLExtensions, Signature, 
     InvoiceType, AdditionalDocumentReference, TaxScheme, PartyTaxScheme, Address, LegalEntity, Delivery, 
     Party, PaymentMeans, TaxCategory, AllowanceCharge, TaxSubTotal, TaxTotal, LegalMonetaryTotal, 
@@ -303,9 +312,9 @@ try {
 Before submitting the invoice to **ZATCA**, we need to **digitally sign** it using the **compliance certificate** obtained earlier.
 
 ```php
-use Saleh7\Zatca\Helpers\Certificate;
-use Saleh7\Zatca\InvoiceSigner;
-use Saleh7\Zatca\Storage;
+use Montju\Zatca\Helpers\Certificate;
+use Montju\Zatca\InvoiceSigner;
+use Montju\Zatca\Storage;
 
 // Load the unsigned invoice XML
 $xmlInvoice = (new Storage)->get(__DIR__ . '/output/unsigned_invoice.xml');

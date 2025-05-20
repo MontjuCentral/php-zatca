@@ -1,6 +1,6 @@
 <?php
 
-namespace Saleh7\Zatca\Exceptions;
+namespace Montju\Zatca\Exceptions;
 
 /**
  * Exception for CertificateBuilder errors.

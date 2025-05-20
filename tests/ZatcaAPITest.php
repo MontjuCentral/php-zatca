@@ -8,10 +8,10 @@ use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\HandlerStack;
-use Saleh7\Zatca\ZatcaAPI;
-use Saleh7\Zatca\Exceptions\ZatcaApiException;
-use Saleh7\Zatca\Api\ComplianceCertificateResult;
-use Saleh7\Zatca\Api\ProductionCertificateResult;
+use Montju\Zatca\ZatcaAPI;
+use Montju\Zatca\Exceptions\ZatcaApiException;
+use Montju\Zatca\Api\ComplianceCertificateResult;
+use Montju\Zatca\Api\ProductionCertificateResult;
 
 final class ZatcaAPITest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Saleh7\Zatca\Api;
+namespace Montju\Zatca\Api;
 
 /**
  * Class ProductionCertificateResult

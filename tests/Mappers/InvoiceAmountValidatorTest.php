@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Mappers\Validators\InvoiceAmountValidator;
+use Montju\Zatca\Mappers\Validators\InvoiceAmountValidator;
 
 /**
  * Class InvoiceAmountValidatorTest

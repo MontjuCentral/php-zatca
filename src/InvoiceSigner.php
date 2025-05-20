@@ -1,12 +1,12 @@
 <?php
 
-namespace Saleh7\Zatca;
+namespace Montju\Zatca;
 
-use Saleh7\Zatca\Exceptions\ZatcaStorageException;
-use Saleh7\Zatca\Helpers\QRCodeGenerator;
-use Saleh7\Zatca\Helpers\Certificate;
-use Saleh7\Zatca\Helpers\InvoiceExtension;
-use Saleh7\Zatca\Helpers\InvoiceSignatureBuilder;
+use Montju\Zatca\Exceptions\ZatcaStorageException;
+use Montju\Zatca\Helpers\QRCodeGenerator;
+use Montju\Zatca\Helpers\Certificate;
+use Montju\Zatca\Helpers\InvoiceExtension;
+use Montju\Zatca\Helpers\InvoiceSignatureBuilder;
 
 class InvoiceSigner
 {
@@ -33,6 +33,8 @@ class InvoiceSigner
 
         // Convert XML string to DOM
         $xmlDom = InvoiceExtension::fromString($xmlInvoice);
+        $invoiceElement = $xmlDom->getElement();
+        $dom = $invoiceElement->ownerDocument;
 
         // Remove unwanted tags per guidelines
         $xmlDom->removeByXpath('ext:UBLExtensions');
@@ -40,7 +42,7 @@ class InvoiceSigner
         $xmlDom->removeParentByXpath('cac:AdditionalDocumentReference/cbc:ID[. = "QR"]');
 
         // Compute hash using SHA-256
-        $invoiceHashBinary = hash('sha256', $xmlDom->getElement()->C14N(false, false), true);
+        $invoiceHashBinary = hash('sha256', $invoiceElement->C14N(false, false), true);
         $instance->hash = base64_encode($invoiceHashBinary);
 
         // Create digital signature using the private key
@@ -48,37 +50,55 @@ class InvoiceSigner
             $certificate->getPrivateKey()->sign($invoiceHashBinary)
         );
 
-        // Prepare UBL Extension with certificate, hash, and signature
-        $ublExtension = (new InvoiceSignatureBuilder)
+        // Build UBL Extension XML (as string)
+        $ublExtensionXml = (new InvoiceSignatureBuilder)
             ->setCertificate($certificate)
             ->setInvoiceDigest($instance->hash)
             ->setSignatureValue($instance->digitalSignature)
             ->buildSignatureXml();
+
+        // Import UBL Extension as DOM
+        $ublDom = new \DOMDocument();
+        $ublDom->loadXML('<?xml version="1.0" encoding="UTF-8"?><ext:UBLExtensions xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">' . $ublExtensionXml . '</ext:UBLExtensions>');
+        $ublExtensionsNode = $dom->importNode($ublDom->documentElement, true);
+
+        // Insert UBL Extension before <cbc:ProfileID>
+        $profileIdNode = $invoiceElement->getElementsByTagNameNS(
+            'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2',
+            'ProfileID'
+        )->item(0);
+
+        if ($profileIdNode) {
+            $invoiceElement->insertBefore($ublExtensionsNode, $profileIdNode);
+        }
 
         // Generate QR Code
         $instance->qrCode = QRCodeGenerator::createFromTags(
             $xmlDom->generateQrTagsArray($certificate, $instance->hash, $instance->digitalSignature)
         )->encodeBase64();
 
+        // Get QR node as XML and import it
+        $qrDom = new \DOMDocument();
+        $qrNodeXml = $instance->getQRNode($instance->qrCode);
+        $qrDom->loadXML('<?xml version="1.0" encoding="UTF-8"?><root xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2">' . $qrNodeXml . '</root>');
+        $qrNode = $dom->importNode($qrDom->documentElement->firstChild, true);
 
-        // Insert UBL Extension and QR Code into the XML
-        $signedInvoice = str_replace(
-            [
-                "<cbc:ProfileID>",
-                '<cac:AccountingSupplierParty>',
-            ],
-            [
-                "<ext:UBLExtensions>" . $ublExtension . "</ext:UBLExtensions>" . PHP_EOL . "    <cbc:ProfileID>",
-                $instance->getQRNode($instance->qrCode) . PHP_EOL . "    <cac:AccountingSupplierParty>",
-            ],
-            $xmlDom->toXml()
-        );
+        // Insert QR before <cac:AccountingSupplierParty>
+        $supplierNode = $invoiceElement->getElementsByTagNameNS(
+            'urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2',
+            'AccountingSupplierParty'
+        )->item(0);
 
-        // Remove extra blank lines and save
-        $instance->signedInvoice = preg_replace('/^[ \t]*[\r\n]+/m', '', $signedInvoice);
+        if ($supplierNode) {
+            $invoiceElement->insertBefore($qrNode, $supplierNode);
+        }
+
+        // Finalize signed invoice
+        $instance->signedInvoice = $dom->saveXML();
 
         return $instance;
     }
+
 
     /**
      * Saves the signed invoice as an XML file.

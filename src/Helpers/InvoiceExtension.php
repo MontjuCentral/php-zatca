@@ -1,5 +1,5 @@
 <?php
-namespace Saleh7\Zatca\Helpers;
+namespace Montju\Zatca\Helpers;
 
 use DOMDocument;
 use DOMElement;
@@ -7,7 +7,7 @@ use DOMException;
 use DOMXPath;
 use WeakMap;
 use InvalidArgumentException;
-use Saleh7\Zatca\Tags\{Seller, TaxNumber, PublicKey, InvoiceTotalAmount, InvoiceTaxAmount, InvoiceHash, InvoiceDigitalSignature, InvoiceDate, CertificateSignature};
+use Montju\Zatca\Tags\{Seller, TaxNumber, PublicKey, InvoiceTotalAmount, InvoiceTaxAmount, InvoiceHash, InvoiceDigitalSignature, InvoiceDate, CertificateSignature};
 
 /**
  * Class InvoiceExtension

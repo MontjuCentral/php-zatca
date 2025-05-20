@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Helpers\InvoiceSignatureBuilder;
-use Saleh7\Zatca\Helpers\Certificate;
+use Montju\Zatca\Helpers\InvoiceSignatureBuilder;
+use Montju\Zatca\Helpers\Certificate;
 use phpseclib3\Crypt\Common\PrivateKey;
 
 /**

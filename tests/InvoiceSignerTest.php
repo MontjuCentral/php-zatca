@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\InvoiceSigner;
-use Saleh7\Zatca\Helpers\Certificate;
+use Montju\Zatca\InvoiceSigner;
+use Montju\Zatca\Helpers\Certificate;
 use phpseclib3\Crypt\Common\PrivateKey;
 use phpseclib3\Crypt\Common\PublicKey;
 

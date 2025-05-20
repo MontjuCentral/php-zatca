@@ -1,6 +1,6 @@
 <?php
 
-namespace Saleh7\Zatca\Helpers;
+namespace Montju\Zatca\Helpers;
 
 use phpseclib3\Crypt\Common\PrivateKey;
 use phpseclib3\Crypt\EC;

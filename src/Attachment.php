@@ -1,11 +1,11 @@
 <?php
 
-namespace Saleh7\Zatca;
+namespace Montju\Zatca;
 
 use Exception;
 use InvalidArgumentException;
 
-use Saleh7\Zatca\Exceptions\ZatcaStorageException;
+use Montju\Zatca\Exceptions\ZatcaStorageException;
 use function Sabre\Xml\Deserializer\mixedContent;
 
 use Sabre\Xml\Reader;

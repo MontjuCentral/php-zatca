@@ -1,8 +1,8 @@
 <?php
 
-namespace Saleh7\Zatca\Helpers;
+namespace Montju\Zatca\Helpers;
 
-use Saleh7\Zatca\Helpers\Certificate;
+use Montju\Zatca\Helpers\Certificate;
 use InvalidArgumentException;
 
 /**

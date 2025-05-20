@@ -1,8 +1,8 @@
 <?php
-namespace Saleh7\Zatca\Mappers;
+namespace Montju\Zatca\Mappers;
 
-use Saleh7\Zatca\AdditionalDocumentReference;
-use Saleh7\Zatca\Attachment;
+use Montju\Zatca\AdditionalDocumentReference;
+use Montju\Zatca\Attachment;
 
 /**
  * Class AdditionalDocumentMapper

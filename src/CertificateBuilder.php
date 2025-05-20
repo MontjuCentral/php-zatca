@@ -1,7 +1,7 @@
 <?php
-namespace Saleh7\Zatca;
-use Saleh7\Zatca\Exceptions\CertificateBuilderException;
-use Saleh7\Zatca\Exceptions\ZatcaStorageException;
+namespace Montju\Zatca;
+use Montju\Zatca\Exceptions\CertificateBuilderException;
+use Montju\Zatca\Exceptions\ZatcaStorageException;
 
 /**
  * Class CertificateBuilder

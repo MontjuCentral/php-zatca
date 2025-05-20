@@ -1,7 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Saleh7\Zatca\{
+use Montju\Zatca\{
     SignatureInformation,UBLDocumentSignatures,ExtensionContent,UBLExtension,UBLExtensions,Signature,InvoiceType,AdditionalDocumentReference,
     TaxScheme,PartyTaxScheme,Address,LegalEntity,Delivery,Party,PaymentMeans,TaxCategory,
     AllowanceCharge,TaxSubTotal,TaxTotal,LegalMonetaryTotal,ClassifiedTaxCategory,Item,Price,InvoiceLine,

@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Mappers\InvoiceMapper;
-use Saleh7\Zatca\Invoice;
+use Montju\Zatca\Mappers\InvoiceMapper;
+use Montju\Zatca\Invoice;
 
 /**
  * Class InvoiceMapperTest

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Helpers\Certificate;
+use Montju\Zatca\Helpers\Certificate;
 use phpseclib3\File\X509;
 use phpseclib3\Crypt\Common\PrivateKey;
 

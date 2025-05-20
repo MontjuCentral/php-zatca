@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Storage;
-use Saleh7\Zatca\Exceptions\ZatcaStorageException;
+use Montju\Zatca\Storage;
+use Montju\Zatca\Exceptions\ZatcaStorageException;
 
 class StorageTest extends TestCase
 {

@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Tag;
-use Saleh7\Zatca\Tags\{Seller, TaxNumber, PublicKey, InvoiceTotalAmount, InvoiceTaxAmount, InvoiceHash, InvoiceDigitalSignature, InvoiceDate, CertificateSignature};
+use Montju\Zatca\Tag;
+use Montju\Zatca\Tags\{Seller, TaxNumber, PublicKey, InvoiceTotalAmount, InvoiceTaxAmount, InvoiceHash, InvoiceDigitalSignature, InvoiceDate, CertificateSignature};
 
 
 /**

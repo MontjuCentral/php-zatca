@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
 
-use Saleh7\Zatca\ZatcaAPI;
-use Saleh7\Zatca\Exceptions\ZatcaApiException;
+use Montju\Zatca\ZatcaAPI;
+use Montju\Zatca\Exceptions\ZatcaApiException;
 
 $zatcaClient = new ZatcaAPI('sandbox');
 

@@ -1,16 +1,16 @@
 <?php
 
-namespace Saleh7\Zatca;
+namespace Montju\Zatca;
 
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Psr\Http\Message\ResponseInterface;
-use Saleh7\Zatca\Api\ComplianceCertificateResult;
-use Saleh7\Zatca\Api\ProductionCertificateResult;
-use Saleh7\Zatca\Exceptions\ZatcaApiException;
+use Montju\Zatca\Api\ComplianceCertificateResult;
+use Montju\Zatca\Api\ProductionCertificateResult;
+use Montju\Zatca\Exceptions\ZatcaApiException;
 use InvalidArgumentException;
-use Saleh7\Zatca\Exceptions\ZatcaStorageException;
+use Montju\Zatca\Exceptions\ZatcaStorageException;
 
 /**
  * ZATCA E-Invoicing API Client for compliance and reporting operations.
@@ -253,12 +253,12 @@ class ZatcaAPI
                 'json'    => $payload,
             ];
 
-            // استخدام عنوان URL المبني على البيئة الحالية
             $url = $this->getBaseUri() . $endpoint;
 
             $response = $this->httpClient->request($method, $url, $options);
             $statusCode = $response->getStatusCode();
-
+            dd($statusCode);
+//dd($response);
             if (!$this->isSuccessfulResponse($statusCode)) {
                 throw new ZatcaApiException(null, [
                     'endpoint' => $endpoint,
@@ -266,7 +266,7 @@ class ZatcaAPI
                     'response' => $this->parseResponse($response),
                 ]);
             }
-
+            dd($response);
             return $this->parseResponse($response);
         } catch (GuzzleException $e) {
             throw new ZatcaApiException('HTTP request failed', [
@@ -282,7 +282,7 @@ class ZatcaAPI
     private function isSuccessfulResponse(int $statusCode): bool
     {
         return in_array($statusCode, self::SUCCESS_STATUS_CODES, true) &&
-               ($this->allowWarnings || $statusCode === 200);
+            ($this->allowWarnings || $statusCode === 200);
     }
 
     /**
@@ -312,7 +312,8 @@ class ZatcaAPI
      */
     private function formatCertificate(string $base64Certificate): string
     {
-        return base64_decode($base64Certificate);
+        $decoded = base64_decode($base64Certificate);
+        return $decoded;
     }
 
     /**
@@ -341,5 +342,5 @@ class ZatcaAPI
 
         (new Storage)->put($filePath, $json);
     }
-    
+
 }

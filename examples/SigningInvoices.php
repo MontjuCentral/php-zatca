@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
-use Saleh7\Zatca\Helpers\Certificate;
-use Saleh7\Zatca\InvoiceSigner;
+use Montju\Zatca\Helpers\Certificate;
+use Montju\Zatca\InvoiceSigner;
 
 // get invoice.xml ..
 $xmlInvoice = file_get_contents(__DIR__ .'/output/GeneratorStandard_Invoice.xml');

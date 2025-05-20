@@ -1,8 +1,8 @@
 <?php
 require __DIR__ . '/../../vendor/autoload.php';
 
-use Saleh7\Zatca\CertificateBuilder;
-use Saleh7\Zatca\Exceptions\CertificateBuilderException;
+use Montju\Zatca\CertificateBuilder;
+use Montju\Zatca\Exceptions\CertificateBuilderException;
 
 
 // Usage example with random data:

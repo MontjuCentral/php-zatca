@@ -1,7 +1,7 @@
 <?php
-namespace Saleh7\Zatca\Mappers;
+namespace Montju\Zatca\Mappers;
 
-use Saleh7\Zatca\{
+use Montju\Zatca\{
     Price, AllowanceCharge, UnitCode
 };
 

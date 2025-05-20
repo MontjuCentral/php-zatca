@@ -1,8 +1,8 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Saleh7\Zatca\Helpers\QRCodeGenerator;
-use Saleh7\Zatca\Tags\{
+use Montju\Zatca\Helpers\QRCodeGenerator;
+use Montju\Zatca\Tags\{
     Seller,
     TaxNumber,
     InvoiceDate,

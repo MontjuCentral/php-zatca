@@ -1,5 +1,5 @@
 <?php
-namespace Saleh7\Zatca\Mappers\Validators;
+namespace Montju\Zatca\Mappers\Validators;
 
 /**
  * Class InvoiceAmountValidator

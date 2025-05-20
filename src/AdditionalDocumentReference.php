@@ -1,5 +1,5 @@
 <?php
-namespace Saleh7\Zatca;
+namespace Montju\Zatca;
 
 use function Sabre\Xml\Deserializer\keyValue;
 

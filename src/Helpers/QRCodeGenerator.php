@@ -1,9 +1,9 @@
 <?php
 
-namespace Saleh7\Zatca\Helpers;
+namespace Montju\Zatca\Helpers;
 
 use InvalidArgumentException;
-use Saleh7\Zatca\Tag;
+use Montju\Zatca\Tag;
 class QRCodeGenerator
 {
     /**

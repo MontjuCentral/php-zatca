@@ -1,8 +1,8 @@
 <?php
 
-namespace Saleh7\Zatca\Tags;
+namespace Montju\Zatca\Tags;
 
-use Saleh7\Zatca\Tag;
+use Montju\Zatca\Tag;
 
 class InvoiceDate extends Tag
 {

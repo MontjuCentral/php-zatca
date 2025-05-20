@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
-use Saleh7\Zatca\Mappers\InvoiceMapper;
-use Saleh7\Zatca\GeneratorInvoice;
-use Saleh7\Zatca\Helpers\Certificate;
-use Saleh7\Zatca\InvoiceSigner;
+use Montju\Zatca\Mappers\InvoiceMapper;
+use Montju\Zatca\GeneratorInvoice;
+use Montju\Zatca\Helpers\Certificate;
+use Montju\Zatca\InvoiceSigner;
 
 // Sample data (can be from JSON, array, database, etc.)
 $invoiceData = [

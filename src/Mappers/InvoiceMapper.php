@@ -1,12 +1,12 @@
 <?php
-namespace Saleh7\Zatca\Mappers;
+namespace Montju\Zatca\Mappers;
 
 use DateTime;
-use Saleh7\Zatca\{
+use Montju\Zatca\{
     Invoice, UBLExtensions, Signature, InvoiceType, TaxTotal, LegalMonetaryTotal, Delivery, AllowanceCharge, BillingReference
 };
-use Saleh7\Zatca\Mappers\Validators\InvoiceValidator;
-// use Saleh7\Zatca\Mappers\Validators\InvoiceAmountValidator;
+use Montju\Zatca\Mappers\Validators\InvoiceValidator;
+// use Montju\Zatca\Mappers\Validators\InvoiceAmountValidator;
 
 /**
  * Class InvoiceMapper
