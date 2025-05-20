@@ -208,6 +208,37 @@ class ZatcaAPI
     }
 
     /**
+     * Submit invoice for zatca as reporting.
+     *
+     * @param string $certificate  The certificate for authentication.
+     * @param string $secret       API secret.
+     * @param string $signedInvoice Signed invoice content.
+     * @param string $invoiceHash  Invoice hash.
+     * @param string $egsUuid      Unique invoice identifier.
+     * @return array API response data.
+     * @throws ZatcaApiException For API communication errors.
+     */
+    public function submitReportInvoice(
+        string $certificate,
+        string $secret,
+        string $signedInvoice,
+        string $invoiceHash,
+        string $egsUuid
+    ): array {
+        return $this->sendRequest(
+            'POST',
+            '/invoices/reporting/single',
+            ['Clearance-Status' => '0', 'Accept-Language' => 'en'],
+            [
+                'invoiceHash' => $invoiceHash,
+                'uuid'        => $egsUuid,
+                'invoice'     => base64_encode($signedInvoice),
+            ],
+            $this->createAuthHeaders($certificate, $secret)
+        );
+    }
+
+    /**
      * Generate authentication headers for secured endpoints.
      *
      * @param string $certificate
