@@ -12,6 +12,7 @@ class AdditionalDocumentReference implements XmlSerializable, XmlDeserializable
 {
     private $id;
     private $UUID;
+    private $previousInvoiceHash;
     private $documentType;
     private $documentTypeCode;
     private $documentDescription;
@@ -42,6 +43,16 @@ class AdditionalDocumentReference implements XmlSerializable, XmlDeserializable
     public function setUUID(?string $UUID)
     {
         $this->UUID = $UUID;
+        return $this;
+    }
+
+    /**
+     * @param string $previousInvoiceHash
+     * @return AdditionalDocumentReference
+     */
+    public function setPreviousInvoiceHash(string $previousInvoiceHash): AdditionalDocumentReference
+    {
+        $this->previousInvoiceHash = $previousInvoiceHash;
         return $this;
     }
 
@@ -131,6 +142,20 @@ class AdditionalDocumentReference implements XmlSerializable, XmlDeserializable
                 Schema::CBC . 'UUID' => $this->UUID
             ]);
         }
+
+        if ($this->previousInvoiceHash !== null) {
+            $writer->write([
+                'name' => Schema::CAC . 'Attachment',
+                'value' => [
+                    'name' => Schema::CBC . 'EmbeddedDocumentBinaryObject',
+                    'value' => $this->previousInvoiceHash,
+                    'attributes' => [
+                        'mimeCode' => 'text/plain'
+                    ]
+                ],
+            ]);
+        }
+
         if ($this->documentTypeCode !== null) {
             $writer->write([
                 Schema::CBC . 'DocumentTypeCode' => $this->documentTypeCode
@@ -165,6 +190,7 @@ class AdditionalDocumentReference implements XmlSerializable, XmlDeserializable
 
         return (new static())
             ->setId($keyValues[Schema::CBC . 'ID'] ?? null)
+            ->setPreviousInvoiceHash($keyValues[Schema::CBC . 'EmbeddedDocumentBinaryObject'] ?? null)
             ->setDocumentType($keyValues[Schema::CBC . 'DocumentType'] ?? null)
             ->setDocumentTypeCode($keyValues[Schema::CBC . 'DocumentTypeCode'] ?? null)
             ->setDocumentDescription($keyValues[Schema::CBC . 'DocumentDescription'] ?? null)
