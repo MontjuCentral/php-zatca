@@ -11,7 +11,7 @@ use phpseclib3\File\X509;
  *
  * Provides methods to manage and use X509 certificates.
  *
- * @package Saleh7\Zatca\Helpers
+ * @package Montju\Zatca\Helpers
  * @mixin X509
  */
 class Certificate

@@ -13,7 +13,7 @@ namespace Montju\Zatca\Mappers\Validators;
  * - Each invoice line has valid numeric values for quantity, price, and line extension amounts,
  *   and that calculations (such as price * quantity) are consistent with the provided amounts.
  *
- * @package Saleh7\Zatca\Mappers\Validators
+ * @package Montju\Zatca\Mappers\Validators
  */
 class InvoiceAmountValidator
 {

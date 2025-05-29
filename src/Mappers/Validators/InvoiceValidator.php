@@ -12,7 +12,7 @@ namespace Montju\Zatca\Mappers\Validators;
  * payment means, tax totals, legal monetary totals, invoice lines, and additional
  * document references.
  *
- * @package Saleh7\Zatca\Mappers\Validators
+ * @package Montju\Zatca\Mappers\Validators
  */
 class InvoiceValidator
 {

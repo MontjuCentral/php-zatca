@@ -10,7 +10,7 @@ use InvalidArgumentException;
  *
  * Builds the UBL signature XML for invoices.
  *
- * @package Saleh7\Zatca\Helpers
+ * @package Montju\Zatca\Helpers
  */
 class InvoiceSignatureBuilder
 {

@@ -27,7 +27,7 @@ use Montju\Zatca\{
  *   "identificationType" => "CRN"              // Optional, defaults to "CRN" if not provided.
  * ]
  *
- * @package Saleh7\Zatca\Mappers
+ * @package Montju\Zatca\Mappers
  */
 class SupplierMapper
 {

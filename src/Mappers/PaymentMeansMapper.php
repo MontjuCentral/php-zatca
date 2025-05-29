@@ -13,7 +13,7 @@ use Montju\Zatca\PaymentMeans;
  *     "code" => "10" // Payment means code, e.g., "10" for cash.
  * ]
  *
- * @package Saleh7\Zatca\Mappers
+ * @package Montju\Zatca\Mappers
  */
 class PaymentMeansMapper
 {

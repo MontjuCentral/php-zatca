@@ -15,7 +15,7 @@ use Montju\Zatca\Tags\{Seller, TaxNumber, PublicKey, InvoiceTotalAmount, Invoice
  * This class wraps a DOMElement and provides utility methods for managing
  * invoice XML extensions, including parsing, modifying, and exporting XML.
  *
- * @package Saleh7\Zatca\Helpers
+ * @package Montju\Zatca\Helpers
  */
 class InvoiceExtension
 {

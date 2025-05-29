@@ -19,7 +19,7 @@ use Montju\Zatca\{
  *     "taxPercent" => 15
  * ]
  *
- * @package Saleh7\Zatca\Mappers
+ * @package Montju\Zatca\Mappers
  */
 class ItemMapper
 {

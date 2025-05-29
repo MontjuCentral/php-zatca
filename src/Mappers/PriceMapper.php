@@ -24,7 +24,7 @@ use Montju\Zatca\{
  *   ]
  * ]
  *
- * @package Saleh7\Zatca\Mappers
+ * @package Montju\Zatca\Mappers
  */
 class PriceMapper
 {
